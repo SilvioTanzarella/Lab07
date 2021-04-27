@@ -38,7 +38,11 @@ public class FXMLController {
     
     @FXML
     void doRun(ActionEvent event) {
-    	txtResult.clear();
+    	
+    	int year = Integer.parseInt(this.txtYears.getText());
+    	int hour = Integer.parseInt(this.txtHours.getText());
+    	this.txtResult.setText(model.worstCase(this.cmbNerc.getValue(), year, hour));
+  
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -54,5 +58,6 @@ public class FXMLController {
     
     public void setModel(Model model) {
     	this.model = model;
+    	this.cmbNerc.getItems().addAll(model.getNercList());
     }
 }
